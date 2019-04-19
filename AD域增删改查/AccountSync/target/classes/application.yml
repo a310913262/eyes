@@ -1,0 +1,28 @@
+ldap.enabled: true
+
+  ####### LDAP ##############
+ldap.urls: ldap://imss.com.dns:389/
+ldap.base.dn: dc=ad,dc=com
+ldap.username: AD0\Administrator
+ldap.password: P@ssw0rd
+
+  ####### GENERAL ##############
+server.port: 80
+#spring.main.banner-mode: off
+spring.thymeleaf.cache: false
+
+elasticsearch.uri: https://192.168.0.104:9200
+
+nessus.uri: https://172.17.248.63:8834
+
+grafana.uri: http://192.168.64.102:3000
+
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: hadoop01:9092,hadoop02:9092,hadoop03:9092
+    consumer:
+      enable-auto-commit: true
+      group-id: applog
+      auto-offset-reset: latest
+      bootstrap-servers: hadoop01:9092,hadoop02:9092,hadoop03:9092

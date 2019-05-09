@@ -60,8 +60,7 @@ public class LdapConvert {
         try {
             Object fieldValue = null;
             if (StringUtils.hasLength(fieldName) && object != null) {
-                String firstLetter = ""; // 首字母
-                String getter = ""; // get方法
+                
                 Method method = null; // 方法
                 String extraKey = null;
                 // 处理扩展属性 extraData.key
@@ -70,8 +69,8 @@ public class LdapConvert {
                     fieldName = extra[0];
                     extraKey = extra[1];
                 }
-                firstLetter = fieldName.substring(0, 1).toUpperCase();
-                getter = "get" + firstLetter + fieldName.substring(1);
+                
+                getter = "get" + StringUtils.capitalize(name);
                 method = object.getClass().getMethod(getter, new Class[] {});
                 fieldValue = method.invoke(object, new Object[] {});
                 if (extraKey != null) {

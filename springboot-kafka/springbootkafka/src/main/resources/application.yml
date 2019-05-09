@@ -3,44 +3,36 @@ server:
   port: 8081
 
 
-# spring ¼¯³ÉkafkaÅäÖÃ
 spring:
   kafka:
-    #    Éú²úÕß
     producer:
-      #  ±íÊ¾ËùÓĞbroker¶¼È·ÈÏ½ÓÊÕ³É¹¦
       acks: all
       retries: 0
-      #      Åú´¦Àí´óĞ¡
       batch-size: 16384
       buffer-memory: 33554432
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      #      ÑÓ³Ù·¢ËÍÊ±¼ä
       linger: 5
-      #  ÅäÖÃsasl°²È«»úÖÆ
 #      properties:
 #        sasl.mechanism:  # PLAIN
 #        security.protocol: #  SASL_PLAINTEXT
 #        sasl.jaas.config: #  org.apache.kafka.common.security.plain.PlainLoginModule required username="xxxx" password="xxxx";
       bootstrap-servers: 192.168.64.100:9092,192.168.64.102:9092,192.168.64.103:9092
       topic: topic_test
-    # Ïû·ÑÕß
+    # ??????
     consumer:
-      #  ±íÊ¾kafka²»³ÖÓĞµ±Ç°offsetÊ±Ó¦µ±²ÉÓÃµÄ²ßÂÔ
-#      earliest
-#      µ±¸÷·ÖÇøÏÂÓĞÒÑÌá½»µÄoffsetÊ±£¬´ÓÌá½»µÄoffset¿ªÊ¼Ïû·Ñ£»ÎŞÌá½»µÄoffsetÊ±£¬´ÓÍ·¿ªÊ¼Ïû·Ñ
-#      latest
-#      µ±¸÷·ÖÇøÏÂÓĞÒÑÌá½»µÄoffsetÊ±£¬´ÓÌá½»µÄoffset¿ªÊ¼Ïû·Ñ£»ÎŞÌá½»µÄoffsetÊ±£¬Ïû·ÑĞÂ²úÉúµÄ¸Ã·ÖÇøÏÂµÄÊı¾İ
-#      none
-#      topic¸÷·ÖÇø¶¼´æÔÚÒÑÌá½»µÄoffsetÊ±£¬´Óoffsetºó¿ªÊ¼Ïû·Ñ£»Ö»ÒªÓĞÒ»¸ö·ÖÇø²»´æÔÚÒÑÌá½»µÄoffset£¬ÔòÅ×³öÒì³£
+#  earliest
+#  å½“å„åˆ†åŒºä¸‹æœ‰å·²æäº¤çš„offsetæ—¶ï¼Œä»æäº¤çš„offsetå¼€å§‹æ¶ˆè´¹ï¼›æ— æäº¤çš„offsetæ—¶ï¼Œä»å¤´å¼€å§‹æ¶ˆè´¹
+#  latest
+#  å½“å„åˆ†åŒºä¸‹æœ‰å·²æäº¤çš„offsetæ—¶ï¼Œä»æäº¤çš„offsetå¼€å§‹æ¶ˆè´¹ï¼›æ— æäº¤çš„offsetæ—¶ï¼Œæ¶ˆè´¹æ–°äº§ç”Ÿçš„è¯¥åˆ†åŒºä¸‹çš„æ•°æ®
+#  none
+#  topicå„åˆ†åŒºéƒ½å­˜åœ¨å·²æäº¤çš„offsetæ—¶ï¼Œä»offsetåå¼€å§‹æ¶ˆè´¹ï¼›åªè¦æœ‰ä¸€ä¸ªåˆ†åŒºä¸å­˜åœ¨å·²æäº¤çš„offsetï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       group-id: test
       bootstrap-servers: 192.168.64.100:9092,192.168.64.102:9092,192.168.64.103:9092
       topics: topic_test
-      #  ÅäÖÃsasl°²È«»úÖÆ
 #      properties:
 #        sasl.mechanism: # PLAIN
 #        security.protocol: #  SASL_PLAINTEXT

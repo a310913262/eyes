@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<!-- 引入配置文件 -->
+	<properties url="file:///D:/scala_work/spark/generator-init.properties" />
+	<classPathEntry location="${classPath}" />
+	<context id="context1" targetRuntime="MyBatis3">
+		<!-- 生成注释配置，表更新时不破坏自己添加的内容 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" /><!-- 是否取消注释，否为不取消 -->
+			<property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳，否为生成时间戳 -->
+			<property name="dateFormat" value="yyyy-MM-dd hh:mm:ss" /><!-- 时间戳格式化 -->
+		</commentGenerator>
+
+		<jdbcConnection driverClass="${jdbc_driver}" connectionURL="${jdbc_url}" userId="${jdbc_user}" password="${jdbc_password}" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" /><!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="${model_package}" targetProject="${project_src}">
+			<property name="trimStrings" value="true" /> <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="${sqlmap_package}" targetProject="${project_src}" />
+		<javaClientGenerator targetPackage="${dao_package}" targetProject="${project_src}" type="XMLMAPPER" />
+		<!-- 表 -->
+
+		<table tableName="person">
+			<property name="useActualColumnNames" value="true" />
+		</table>
+
+
+
+
+	</context>
+
+</generatorConfiguration>

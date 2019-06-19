@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="hbase-annotations-1.2.0-cdh5.15.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/hbase-annotations-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-annotations-1.2.0-cdh5.15.2-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-client-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-common-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-common-1.2.0-cdh5.15.2-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-examples-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-external-blockcache-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-hadoop2-compat-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-hadoop2-compat-1.2.0-cdh5.15.2-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-hadoop-compat-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-hadoop-compat-1.2.0-cdh5.15.2-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-it-1.2.0-cdh5.15.2-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-prefix-tree-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-procedure-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-protocol-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-rest-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-rsgroup-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-rsgroup-1.2.0-cdh5.15.2-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-server-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-server-1.2.0-cdh5.15.2-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-spark-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hbase-thrift-1.2.0-cdh5.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-core-2.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

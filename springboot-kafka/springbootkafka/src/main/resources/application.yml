@@ -17,7 +17,7 @@ spring:
 #        sasl.mechanism:  # PLAIN
 #        security.protocol: #  SASL_PLAINTEXT
 #        sasl.jaas.config: #  org.apache.kafka.common.security.plain.PlainLoginModule required username="xxxx" password="xxxx";
-      bootstrap-servers: 192.168.64.100:9092,192.168.64.102:9092,192.168.64.103:9092
+      bootstrap-servers: 192.168.64.100:9092,192.168.64.101:9092,192.168.64.102:9092
       topic: topic_test
     # ??????
     consumer:
@@ -31,7 +31,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       group-id: test
-      bootstrap-servers: 192.168.64.100:9092,192.168.64.102:9092,192.168.64.103:9092
+      bootstrap-servers: 192.168.64.100:9092,192.168.64.101:9092,192.168.64.102:9092
       topics: topic_test
 #      properties:
 #        sasl.mechanism: # PLAIN

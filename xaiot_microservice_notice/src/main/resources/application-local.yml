@@ -1,0 +1,51 @@
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:20010/eureka/
+
+
+spring:
+  datasource:
+    #    driver-class-name: org.postgresql.Driver
+    #    url: jdbc:postgresql://127.0.0.1/aaa
+    #    username: root
+    #    password: root
+    xaiotadmin:
+      driver-class-name: com.mysql.jdbc.Driver
+      url:  jdbc:mysql://172.16.74.134:3306/xaiot_admin?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: Iottest@246
+    xaiotportal:
+      driver-class-name: com.mysql.jdbc.Driver
+      url:   jdbc:mysql://172.16.74.134:3306/xaiot_portal?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8&useSSL=false
+      username: root
+      password: Iottest@246
+
+
+
+
+      #    password: root123
+      #初始化连接
+      initial-size: 10
+      #最大空闲连接
+      max-idle: 20
+      #最小空闲连接
+      min-idle: 5
+      #最大连接数量
+      max-active: 50
+      #是否在自动回收超时连接的时候打印连接的超时错误
+      log-abandoned: true
+      #是否自动回收超时连接
+      remove-abandoned: true
+      #超时时间(以秒为单位)
+      remove-abandoned-timeout: 180
+      #连接池在等待返回连接时，最长等待多少毫秒再抛出异常
+      max-wait: 10000
+      test-while-idle: true
+      #每隔五分钟检测空闲超过10分钟的连接
+      min-evictable-idle-time-millis: 600000
+      time-between-eviction-runs-millis: 300000
+
+
+mybatis:
+  mapper-locations: classpath:mybayis/*/*.xml

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <contextName>bigdataservice</contextName>
+    <!--<property name="LOG_HOME" value=".logs" />-->
+
+    <!--设置表达式-->
+    <!--%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{80} -%msg%n -->
+    <property name="DEFAULT_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS}  %-5level ${PID} --- [%25thread] %-40logger{16} Line:%-4line : %msg%n" />
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 ,每天保存（侧翻）一次 -->
+            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}.log</FileNamePattern>
+            <!--日志文件保留天数 -->
+            <MaxHistory>90</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${DEFAULT_PATTERN}</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <!--日志文件最大的大小 -->
+        <!--<triggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>20MB</MaxFileSize>
+        </triggeringPolicy>-->
+        <!-- 此日志文件只记录info级别的 -->
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>-->
+    </appender>
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder默认配置为PartternLayoutEncoder -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${DEFAULT_PATTERN}</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- （改）过滤器，可以指定哪些包，哪个记录到等级， -->
+    <!-- 运用的场景比如，你只需要com.demo.controller包下的error日志输出。定义好name="com.demo.controller" level="ERROR" 就行了 -->
+    <logger name="org.mybatis"  level="DEBUG">
+        <appender-ref ref="ROLLING_FILE" />
+
+    </logger>
+
+    <logger name="org.apache.ibatis" level="DEBUG">
+        <appender-ref ref="ROLLING_FILE" />
+
+    </logger>
+
+    <!--打印mybatis的sql语句-->
+    <logger name="com.chinamobile.bds.mapper" level="DEBUG">
+        <appender-ref ref="ROLLING_FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+
+
+    <!-- 根据不同环境设置级别  -->
+    <springProfile name="dev">
+        <!-- 生产环境下，将此级别配置为适合的级别，以免日志文件太多或影响程序性能 -->
+        <root level="INFO">
+            <appender-ref ref="ROLLING_FILE" />
+            <!-- 生产环境将请stdout,testfile去掉 -->
+            <appender-ref ref="STDOUT" />
+        </root>
+    </springProfile>
+
+    <springProfile name="test">
+        <!-- 测试环境下，将此级别配置为适合的级别，以免日志文件太多或影响程序性能 -->
+        <root level="INFO">
+            <appender-ref ref="ROLLING_FILE" />
+            <!-- 生产环境将请stdout,testfile去掉 -->
+            <appender-ref ref="STDOUT" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <!-- 生产环境下，将此级别配置为适合的级别，以免日志文件太多或影响程序性能 -->
+        <root level="INFO">
+            <appender-ref ref="ROLLING_FILE" />
+        </root>
+    </springProfile>
+</configuration>

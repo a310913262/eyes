@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: config-client
+#  cloud:
+#    config:
+#      #配置中心会覆盖本地配置
+#      override-none: false
+#      fail-fast: true
+##      git分支
+#      label: master
+##      配置文件名称
+#      name: mysql,hive
+##      环境版本
+#      profile: dev
+#      discovery:
+#        enabled: true
+#        service-id: config-server
+#  rabbitmq:
+#    host:  115.29.142.58
+#    port: 5672
+#    username: admin
+#    password: admin
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7761/eureka/
+
+
+#  与Spring Boot 2一样，默认情况下，大多数端点都不通过http公开，我们公开了所有端点。对于生产，您应该仔细选择要公开的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

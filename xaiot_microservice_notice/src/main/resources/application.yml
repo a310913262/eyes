@@ -1,0 +1,12 @@
+server:
+  port: 20023
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /xpa/proclamation
+spring:
+  application:
+    name: xpa-service-schedule
+  profiles:
+    active: local
+  datasource:

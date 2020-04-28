@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.xpa.service.microservice.notes.mappers.XaSysteamProclamationMapper">
+
+    <resultMap id="BaseResultMap" type="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation">
+        <id column="p_sys_id" jdbcType="BIGINT" property="pSysId" />
+        <result column="p_sys_module" jdbcType="VARCHAR" property="pSysModule" />
+        <result column="p_sys_title" jdbcType="VARCHAR" property="pSysTitle" />
+        <result column="p_sys_content" jdbcType="VARCHAR" property="pSysContent" />
+        <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+  p_sys_id, p_sys_module, p_sys_title, p_sys_content, create_by, create_time, update_by,
+  update_time
+</sql>
+
+
+    <delete id="delete" parameterType="java.lang.Long">
+  delete from xp_systeam_proclamation
+  where p_sys_id = #{pSysId,jdbcType=BIGINT}
+</delete>
+
+
+    <insert id="insert" parameterType="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation">
+  insert into xp_systeam_proclamation (p_sys_id, p_sys_module, p_sys_title,
+    p_sys_content, create_by, create_time,
+    update_by, update_time)
+  values (#{pSysId,jdbcType=BIGINT}, #{pSysModule,jdbcType=VARCHAR}, #{pSysTitle,jdbcType=VARCHAR},
+    #{pSysContent,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+    #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+</insert>
+
+
+    <insert id="insertDynamic" parameterType="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation">
+        insert into xp_systeam_proclamation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="p_sys_id != null and p_sys_id != ''">
+                p_sys_id,
+            </if>
+            <if test="p_sys_module != null and p_sys_module != ''">
+                p_sys_module,
+            </if>
+            <if test="p_sys_title != null and p_sys_title != ''">
+                p_sys_title,
+            </if>
+            <if test="p_sys_content != null and p_sys_content != ''">
+                p_sys_content,
+            </if>
+            <if test="create_by != null and create_by != ''">
+                create_by,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_by != null and update_by != ''">
+                update_by,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="p_sys_id != null">
+                #{p_sys_id,jdbcType=BIGINT},
+            </if>
+            <if test="p_sys_module != null">
+                #{p_sys_module,jdbcType=VARCHAR},
+            </if>
+            <if test="p_sys_title != null">
+                #{p_sys_title,jdbcType=VARCHAR},
+            </if>
+            <if test="p_sys_content != null">
+                #{p_sys_content,jdbcType=VARCHAR},
+            </if>
+            <if test="create_by != null">
+                #{create_by,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_by != null">
+                #{update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateDynamic" parameterType="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation">
+        update xp_systeam_proclamation
+        <set>
+            <if test="p_sys_module != null">
+                p_sys_module = #{p_sys_module,jdbcType=VARCHAR},
+            </if>
+            <if test="p_sys_title != null">
+                p_sys_title = #{p_sys_title,jdbcType=VARCHAR},
+            </if>
+            <if test="p_sys_content != null">
+                p_sys_content = #{p_sys_content,jdbcType=VARCHAR},
+            </if>
+            <if test="create_by != null">
+                create_by = #{create_by,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_by != null">
+                update_by = #{update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where p_sys_id = #{p_sys_id,jdbcType=BIGINT}
+    </update>
+
+
+    <update id="update" parameterType="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation">
+  update xp_systeam_proclamation
+  set p_sys_module = #{p_sys_module,jdbcType=VARCHAR},
+    p_sys_title = #{p_sys_title,jdbcType=VARCHAR},
+    p_sys_content = #{p_sys_content,jdbcType=VARCHAR},
+    create_by = #{create_by,jdbcType=VARCHAR},
+    create_time = #{create_time,jdbcType=TIMESTAMP},
+    update_by = #{update_by,jdbcType=VARCHAR},
+    update_time = #{update_time,jdbcType=TIMESTAMP}
+  where p_sys_id = #{p_sys_id,jdbcType=BIGINT}
+</update>
+
+
+    <select id="selectByPSysId" parameterType="java.lang.Long" resultType="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation">
+        select
+        <include refid="Base_Column_List" />
+        from  xp_systeam_proclamation
+        where p_sys_id = #{pSysId,jdbcType=BIGINT}
+    </select>
+
+
+    <sql id="findPageWithWhere">
+        <where> 1=1
+            <if test="pSysId != null" >
+                and p_sys_id = #{pSysId,jdbcType=BIGINT}
+            </if>
+            <if test="p_sys_module != null and p_sys_module != ''" >
+                and p_sys_module = #{p_sys_module,jdbcType=VARCHAR}
+            </if>
+            <if test="p_sys_title != null and p_sys_title != ''" >
+                and p_sys_title = #{p_sys_title,jdbcType=VARCHAR}
+            </if>
+            <if test="p_sys_content != null and p_sys_content != ''" >
+                and p_sys_content = #{p_sys_content,jdbcType=VARCHAR}
+            </if>
+            <if test="create_by != null and create_by != ''" >
+                and create_by = #{create_by,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null" >
+                and create_time = #{create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="update_by != null and update_by != ''" >
+                and update_by = #{update_by,jdbcType=VARCHAR}
+            </if>
+            <if test="update_time != null" >
+                and update_time = #{update_time,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </sql>
+
+
+    <select id="findPageWithResult" resultType="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation">
+        select
+        <include refid="Base_Column_List" />
+        from  xp_systeam_proclamation
+        where 1=1
+            <if test="p_sys_content != null and p_sys_content != ''">
+                AND p_sys_title LIKE CONCAT('%',#{p_sys_content},'%')
+            </if>
+            <if test="star_time != null and star_time != ''">
+                and date_format(create_time,'%Y-%m-%d') >= #{star_time}
+            </if>
+            <if test="end_time != null and end_time != ''">
+                and date_format(create_time,'%Y-%m-%d') &lt;=  #{end_time}
+            </if>
+        order by p_sys_id DESC
+        <if test="limit != null">
+            <if test="offset != null">
+                limit #{offset}, #{limit}
+            </if>
+            <if test="offset == null">
+                limit #{limit}
+            </if>
+        </if>
+    </select>
+
+
+    <select id="findPageWithCount"  resultType="Integer">
+        select count(1)
+        from xp_systeam_proclamation
+        where 1=1
+        <if test="p_sys_content != null and p_sys_content != ''">
+            AND p_sys_title LIKE CONCAT('%',#{p_sys_content},'%')
+        </if>
+        <if test="star_time != null and star_time != ''">
+            and date_format(create_time,'%Y-%m-%d') >= #{star_time}
+        </if>
+        <if test="end_time != null and end_time != ''">
+            and date_format(create_time,'%Y-%m-%d') &lt;= #{end_time}
+        </if>
+    </select>
+
+
+    <!--首页展示近三个月的数据-->
+    <select id="queryfirstPage" resultType="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation">
+        select
+        <include refid="Base_Column_List" />
+        from  xp_systeam_proclamation where
+        create_time>DATE_SUB(CURDATE(), INTERVAL 3 MONTH)
+        ORDER BY p_sys_id DESC
+    </select>
+
+
+    <!--对外提供查询系统公告接口-->
+    <select id="selectModuleSystem" resultType="com.cmcc.xpa.service.microservice.notes.entity.XaSysteamProclamation" >
+        select
+        <include refid="Base_Column_List" />
+        from  xp_systeam_proclamation where p_sys_module=#{p_sys_module}
+    </select>
+</mapper>
+
+

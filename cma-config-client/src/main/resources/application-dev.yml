@@ -1,0 +1,77 @@
+server:
+  port: 7000
+#  servlet:
+#    context-path: /cma/client
+
+
+# 要在其中注册的Spring Boot Admin Server的URL。
+spring:
+
+  datasource:
+    druid:
+      first:
+        url: jdbc:mysql://0000000000:3306/dmp?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: 123456
+      second:
+        url: jdbc:mysql://0000000000:3306/vhr?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+
+#  boot:
+#    admin:
+#      client:
+#        instance:
+#          name: cma-admin
+#  zipkin:
+##base-url是zipkin服务端的地址
+#    base-url: http://127.0.0.1:9411
+#  #Sleuth默认采样算法的实现是Reservoir sampling，具体的实现类是PercentageBasedSampler，默认的采样比例为: 0.1(即10%)
+#  sleuth:
+#    sampler:
+#      #percentage是采样比例，设置为1:0时代表全部强求都需要采样:
+#      percentage: 1.0
+
+
+mybatis:
+  mapperLocations[0]: mapper/*.xml
+  mapperLocations[1]: mappers/*.xml
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7761/eureka/
+  instance:
+    prefer-ip-address: true
+    home-page-url-path: /cma/client
+
+
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120000
+        timeout:
+          enabled: false
+feign:
+  hystrix:
+    enabled: true
+  log:
+    enable: true
+
+ribbon:
+  ReadTimeout: 120000
+  ConnectTimeout: 120000
+
+
+  debug: true

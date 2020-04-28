@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmccsi.user.server.dao.DmpNodeDao">
+
+    <resultMap type="com.cmccsi.user.server.entity.DmpNode" id="DmpNodeMap">
+        <result property="nodeId" column="node_id" jdbcType="VARCHAR"/>
+        <result property="taskId" column="task_id" jdbcType="VARCHAR"/>
+        <result property="nodeName" column="node_name" jdbcType="VARCHAR"/>
+        <result property="x" column="x" jdbcType="INTEGER"/>
+        <result property="y" column="y" jdbcType="INTEGER"/>
+        <result property="exeStatus" column="exe_status" jdbcType="VARCHAR"/>
+        <result property="typeId" column="type_id" jdbcType="VARCHAR"/>
+        <result property="parents" column="parents" jdbcType="VARCHAR"/>
+        <result property="children" column="children" jdbcType="VARCHAR"/>
+        <result property="parameters" column="parameters" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="DmpNodeMap">
+        select
+          node_id, task_id, node_name, x, y, exe_status, type_id, parents, children, parameters, create_time, modify_time
+        from dmp.dmp_node
+        where node_id = #{nodeId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="DmpNodeMap">
+        select
+          node_id, task_id, node_name, x, y, exe_status, type_id, parents, children, parameters, create_time, modify_time
+        from dmp.dmp_node
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="DmpNodeMap">
+        select
+          node_id, task_id, node_name, x, y, exe_status, type_id, parents, children, parameters, create_time, modify_time
+        from dmp.dmp_node
+        <where>
+            <if test="nodeId != null and nodeId != ''">
+                and node_id = #{nodeId}
+            </if>
+            <if test="taskId != null and taskId != ''">
+                and task_id = #{taskId}
+            </if>
+            <if test="nodeName != null and nodeName != ''">
+                and node_name = #{nodeName}
+            </if>
+            <if test="x != null">
+                and x = #{x}
+            </if>
+            <if test="y != null">
+                and y = #{y}
+            </if>
+            <if test="exeStatus != null and exeStatus != ''">
+                and exe_status = #{exeStatus}
+            </if>
+            <if test="typeId != null and typeId != ''">
+                and type_id = #{typeId}
+            </if>
+            <if test="parents != null and parents != ''">
+                and parents = #{parents}
+            </if>
+            <if test="children != null and children != ''">
+                and children = #{children}
+            </if>
+            <if test="parameters != null and parameters != ''">
+                and parameters = #{parameters}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="modifyTime != null">
+                and modify_time = #{modifyTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="nodeId" useGeneratedKeys="true">
+        insert into dmp.dmp_node(node_name, x, y, exe_status, type_id, parents, children, parameters, create_time, modify_time)
+        values (#{nodeName}, #{x}, #{y}, #{exeStatus}, #{typeId}, #{parents}, #{children}, #{parameters}, #{createTime}, #{modifyTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update dmp.dmp_node
+        <set>
+            <if test="nodeName != null and nodeName != ''">
+                node_name = #{nodeName},
+            </if>
+            <if test="x != null">
+                x = #{x},
+            </if>
+            <if test="y != null">
+                y = #{y},
+            </if>
+            <if test="exeStatus != null and exeStatus != ''">
+                exe_status = #{exeStatus},
+            </if>
+            <if test="typeId != null and typeId != ''">
+                type_id = #{typeId},
+            </if>
+            <if test="parents != null and parents != ''">
+                parents = #{parents},
+            </if>
+            <if test="children != null and children != ''">
+                children = #{children},
+            </if>
+            <if test="parameters != null and parameters != ''">
+                parameters = #{parameters},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime},
+            </if>
+        </set>
+        where node_id = #{nodeId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from dmp.dmp_node where node_id = #{nodeId}
+    </delete>
+
+</mapper>

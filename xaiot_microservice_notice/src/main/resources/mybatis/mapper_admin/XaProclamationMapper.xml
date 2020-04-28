@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.xpa.service.microservice.notes.mapper.XaProclamationMapper">
+
+    <resultMap id="BaseResultMap" type="com.cmcc.xpa.service.microservice.notes.entity.XaProclamation">
+        <id column="p_id" jdbcType="BIGINT" property="pId"/>
+        <result column="p_title" jdbcType="VARCHAR" property="pTitle"/>
+        <result column="p_type" jdbcType="VARCHAR" property="pType"/>
+        <result column="p_push_object" jdbcType="VARCHAR" property="pPushObject"/>
+        <result column="p_content" jdbcType="VARCHAR" property="pContent"/>
+        <result column="p_isnot_push" jdbcType="VARCHAR" property="pIsnotPush"/>
+        <result column="p_push_time" jdbcType="TIMESTAMP" property="pPushTime"/>
+        <result column="p_is_sucess" jdbcType="VARCHAR" property="pIsSucess"/>
+        <result column="p_pageview" jdbcType="BIGINT" property="pPageview"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+  p_id, p_title, p_type, p_push_object, p_content, p_isnot_push, p_push_time, p_is_sucess,
+  p_pageview, create_by, create_time, update_by, update_time
+</sql>
+
+
+    <delete id="delete" parameterType="java.lang.Long">
+  delete from xp_proclamation
+  where p_id = #{pId,jdbcType=BIGINT}
+</delete>
+
+
+    <insert id="insert" parameterType="com.cmcc.xpa.service.microservice.notes.entity.XaProclamation" useGeneratedKeys="true"
+            keyProperty="p_id">
+  insert into xp_proclamation (p_id, p_title, p_type,
+    p_push_object, p_content, p_isnot_push,
+    p_push_time, p_is_sucess, p_pageview,
+    create_by, create_time, update_by,
+    update_time)
+  values (#{pId,jdbcType=BIGINT}, #{pTitle,jdbcType=VARCHAR}, #{pType,jdbcType=VARCHAR},
+    #{pPushObject,jdbcType=VARCHAR}, #{pContent,jdbcType=VARCHAR}, #{pIsnotPush,jdbcType=VARCHAR},
+    #{pPushTime,jdbcType=TIMESTAMP}, #{pIsSucess,jdbcType=VARCHAR}, #{pPageview,jdbcType=BIGINT},
+    #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR},
+    #{updateTime,jdbcType=TIMESTAMP})
+</insert>
+
+
+    <insert id="insertDynamic" parameterType="com.cmcc.xpa.service.microservice.notes.entity.XaProclamation"
+            useGeneratedKeys="true" keyProperty="p_id">
+        insert into xp_proclamation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="p_id != null">
+                p_id,
+            </if>
+            <if test="p_title != null">
+                p_title,
+            </if>
+            <if test="p_type != null">
+                p_type,
+            </if>
+            <if test="p_push_object != null">
+                p_push_object,
+            </if>
+            <if test="p_content != null">
+                p_content,
+            </if>
+            <if test="p_isnot_push != null">
+                p_isnot_push,
+            </if>
+            <if test="p_push_time != null">
+                p_push_time,
+            </if>
+            <if test="p_is_sucess != null">
+                p_is_sucess,
+            </if>
+            <if test="p_pageview != null">
+                p_pageview,
+            </if>
+            <if test="create_by != null">
+                create_by,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_by != null">
+                update_by,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="p_id != null">
+                #{p_id,jdbcType=BIGINT},
+            </if>
+            <if test="p_title != null">
+                #{p_title,jdbcType=VARCHAR},
+            </if>
+            <if test="p_type != null">
+                #{p_type,jdbcType=VARCHAR},
+            </if>
+            <if test="p_push_object != null">
+                #{p_push_object,jdbcType=VARCHAR},
+            </if>
+            <if test="p_content != null">
+                #{p_content,jdbcType=VARCHAR},
+            </if>
+            <if test="p_isnot_push != null">
+                #{p_isnot_push,jdbcType=VARCHAR},
+            </if>
+            <if test="p_push_time != null">
+                #{p_push_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="p_is_sucess != null">
+                #{p_is_sucess,jdbcType=VARCHAR},
+            </if>
+            <if test="p_pageview != null">
+                #{p_pageview,jdbcType=BIGINT},
+            </if>
+            <if test="create_by != null">
+                #{create_by,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_by != null">
+                #{update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateDynamic" parameterType="com.cmcc.xpa.service.microservice.notes.entity.XaProclamation">
+        update xp_proclamation
+        <set>
+            <if test="p_title != null">
+                p_title = #{p_title,jdbcType=VARCHAR},
+            </if>
+            <if test="p_type != null">
+                p_type = #{p_type,jdbcType=VARCHAR},
+            </if>
+            <if test="p_push_object != null">
+                p_push_object = #{p_push_object,jdbcType=VARCHAR},
+            </if>
+            <if test="p_content != null">
+                p_content = #{p_content,jdbcType=VARCHAR},
+            </if>
+            <if test="p_isnot_push != null">
+                p_isnot_push = #{p_isnot_push,jdbcType=VARCHAR},
+            </if>
+            <if test="p_push_time != null">
+                p_push_time = #{p_push_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="p_is_sucess != null">
+                p_is_sucess = #{p_is_sucess,jdbcType=VARCHAR},
+            </if>
+            <if test="p_pageview != null">
+                p_pageview = #{p_pageview,jdbcType=BIGINT},
+            </if>
+            <if test="create_by != null">
+                create_by = #{create_by,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_by != null">
+                update_by = #{update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where p_id = #{p_id,jdbcType=BIGINT}
+    </update>
+
+
+    <update id="update" parameterType="com.cmcc.xpa.service.microservice.notes.entity.XaProclamation">
+  update xp_proclamation
+  set p_title = #{p_title,jdbcType=VARCHAR},
+    p_type = #{p_type,jdbcType=VARCHAR},
+    p_push_object = #{p_push_object,jdbcType=VARCHAR},
+    p_content = #{p_content,jdbcType=VARCHAR},
+    p_isnot_push = #{p_isnot_push,jdbcType=VARCHAR},
+    p_push_time = #{p_push_time,jdbcType=TIMESTAMP},
+    p_is_sucess = #{p_is_sucess,jdbcType=VARCHAR},
+    p_pageview = #{p_pageview,jdbcType=BIGINT},
+    create_by = #{create_by,jdbcType=VARCHAR},
+    create_time = #{create_time,jdbcType=TIMESTAMP},
+    update_by = #{update_by,jdbcType=VARCHAR},
+    update_time = #{update_time,jdbcType=TIMESTAMP}
+  where p_id = #{pId,jdbcType=BIGINT}
+</update>
+
+
+    <select id="selectByPId" parameterType="java.lang.Long"
+            resultType="com.cmcc.xpa.service.microservice.notes.entity.XaProclamation">
+        select
+        <include refid="Base_Column_List"/>
+        from xp_proclamation
+        where p_id = #{p_id,jdbcType=BIGINT}
+    </select>
+
+
+    <sql id="findPageWithWhere">
+        <where>1=1
+            <if test="p_id != null">
+                and p_id = #{p_id,jdbcType=BIGINT}
+            </if>
+            <if test="p_title != null and p_title != ''">
+                and p_title = #{p_title,jdbcType=VARCHAR}
+            </if>
+            <if test="p_type != null and p_type != ''">
+                and p_type = #{p_type,jdbcType=VARCHAR}
+            </if>
+            <if test="p_push_object != null and p_push_object != ''">
+                and p_push_object = #{p_push_object,jdbcType=VARCHAR}
+            </if>
+            <if test="p_content != null and p_content != ''">
+                and p_content = #{p_content,jdbcType=VARCHAR}
+            </if>
+            <if test="p_isnot_push != null and p_isnot_push != ''">
+                and p_isnot_push = #{p_isnot_push,jdbcType=VARCHAR}
+            </if>
+            <if test="p_push_time != null">
+                and p_push_time = #{p_push_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="p_is_sucess != null and p_is_sucess != ''">
+                and p_is_sucess = #{p_is_sucess,jdbcType=VARCHAR}
+            </if>
+            <if test="p_pageview != null">
+                and p_pageview = #{p_pageview,jdbcType=BIGINT}
+            </if>
+            <if test="create_by != null and create_by != ''">
+                and create_by = #{create_by,jdbcType=VARCHAR}
+            </if>
+            <if test="create_time != null">
+                and create_time = #{create_time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="update_by != null and update_by != ''">
+                and update_by = #{update_by,jdbcType=VARCHAR}
+            </if>
+            <if test="update_time != null">
+                and update_time = #{update_time,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </sql>
+
+
+    <select id="findPageWithResult" resultType="com.cmcc.xpa.service.microservice.notes.entity.XaProclamation">
+        select
+        <include refid="Base_Column_List"/>
+        from xp_proclamation where 1=1
+        <if test="pType != null and pType != ''">
+            AND p_type =#{pType}
+        </if>
+        <if test="p_is_sucess != null and p_is_sucess != ''">
+            AND p_is_sucess =#{p_is_sucess}
+        </if>
+        <if test="star_time != null and star_time != ''">
+            and date_format(create_time,'%Y-%m-%d') >= #{star_time}
+        </if>
+        <if test="end_time != null and end_time != ''">
+            and date_format(create_time,'%Y-%m-%d') &lt;= #{end_time}
+        </if>
+        order by p_id desc
+        <if test="limit != null">
+            <if test="offset != null">
+                limit #{offset}, #{limit}
+            </if>
+            <if test="offset == null">
+                limit #{limit}
+            </if>
+        </if>
+    </select>
+
+
+    <select id="findPageWithCount" resultType="Long">
+        select count(1)
+        from xp_proclamation where 1=1
+        <if test="pType != null and pType != ''">
+            AND p_type =#{pType}
+        </if>
+        <if test="p_is_sucess != null and p_is_sucess != ''">
+            AND p_is_sucess =#{p_is_sucess}
+        </if>
+        <if test="star_time != null and star_time != ''">
+            and date_format(create_time,'%Y-%m-%d') >= #{star_time}
+        </if>
+        <if test="end_time != null and end_time != ''">
+            and date_format(create_time,'%Y-%m-%d') &lt;=  #{end_time}
+        </if>
+    </select>
+
+
+    <!--浏览量查询-->
+    <select id="ProclamationBrowseVolume" resultType="Long">
+        select p_pageview from xp_proclamation where p_id=#{p_id}
+    </select>
+
+    <!--更新浏览量-->
+    <update id="updateProclamationBrowseVolume">
+        update xp_proclamation set p_pageview=#{p_pageview} where p_id=#{p_id}
+    </update>
+
+    <!--推送状态的修改-->
+    <update id="updateProclamationStatus">
+         update xp_proclamation set p_is_sucess=#{p_is_sucess} where p_id=#{p_id}
+    </update>
+
+    <select id="selectNoticeHiding" resultMap="BaseResultMap">
+         select * from xp_proclamation  order by p_id DESC limit 8;
+    </select>
+
+    <!--根据用户id查模块集合-->
+    <select id="queryModule"  resultType="java.util.Map" >
+        select t2.sys_id ,t2.sys_name from mp_admin_role t1, mp_system t2 where t1.sys_id=t2.sys_id and t1.admin_id=#{userId}
+    </select>
+</mapper>
